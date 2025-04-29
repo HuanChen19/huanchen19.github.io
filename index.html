@@ -1,2 +1,60 @@
-<p>幻尘</p>
-<a href="https://space.bilibili.com/534916236?spm_id_from=333.1007.0.0">B站主页</a>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B站主页跳转</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        
+        .bilibili-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 25px;
+            background-color: #00a1d6;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .bilibili-link:hover {
+            transform: scale(1.05);
+            background-color: #00b5e5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .bilibili-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+
+        .link-text {
+            color: white;
+            font-family: 'Microsoft YaHei', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* 使用B站官方图标 */
+        .bilibili-icon {
+            background: url('https://www.bilibili.com/favicon.ico') no-repeat center/contain;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://space.bilibili.com/你的UID" class="bilibili-link" target="_blank" rel="noopener noreferrer">
+        <div class="bilibili-icon"></div>
+        <span class="link-text">访问我的B站主页</span>
+    </a>
+</body>
+</html>
+
