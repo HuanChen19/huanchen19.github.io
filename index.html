@@ -1,60 +1,104 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B站主页跳转</title>
+    <title>双平台跳转</title>
     <style>
+        :root {
+            --bili-blue: #00a1d6;
+            --fandom-green: #3a5ba6;  /* Fandom官方主题色 */
+        }
+
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f2f5;
+            background: linear-gradient(135deg, #f0f2f5 50%, #f8f9fa 50%);
         }
-        
-        .bilibili-link {
+
+        /* 统一按钮样式 */
+        .portal-btn {
             display: inline-flex;
             align-items: center;
-            padding: 15px 25px;
-            background-color: #00a1d6;
+            padding: 14px 32px;
             border-radius: 8px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin: 15px 0;
+            min-width: 240px;
+            border: 2px solid transparent;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .bilibili-link:hover {
-            transform: scale(1.05);
-            background-color: #00b5e5;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        /* B站按钮样式 */
+        .bili-btn {
+            color: var(--bili-blue);
+            border-color: var(--bili-blue);
         }
 
-        .bilibili-icon {
-            width: 32px;
-            height: 32px;
-            margin-right: 10px;
+        /* Fandom按钮样式 */
+        .fandom-btn {
+            color: var(--fandom-green);
+            border-color: var(--fandom-green);
         }
 
-        .link-text {
-            color: white;
+        /* 悬停动效 */
+        .portal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        .bili-btn:hover { background-color: #e6f7ff; }
+        .fandom-btn:hover { background-color: #f0f5ff; }
+
+        /* 图标容器 */
+        .btn-icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            background-size: contain;
+        }
+
+        /* B站图标（Base64编码白色版本） */
+        .bili-icon {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFXSURBVHgB7ZXRbcMwDEDPyuAjK3SFrtAVukJXyApZoStkhbRQAx9iCxJFWZbT5Ac+QBIJ4uEeYhH5eH+8vZxK3L68v0jD9XK5mvb2+rJp5x1HmHX8FgB4BwDgTABbD4FpAADeCwCgFcB8BwCwFwCgFcB8BwBwCwBQAzDfAQDcCwCgBmC+AwB4FABADcB8BwDwKACAEoD5DgDgUQAAJQDzHQDAowAASgDmOwCARwEAlADMdwAAjwIAKAGY7wAAHgUAUAIw3wEAPAoAoARgvgMAeBQAQAnAfAcA8CgAgBKA+Q4A4FEAACUA8x0AwKMAAEoA5jsAgEcBAJQAzHcAAI8CACgBmO8AAB4FAFACMN8BADwKAKAEYL4DAHgUAEAJwHwHAPAoAIASgPkOAOBRAAAlAPMdAMCjAABKAOY7AIBHAQCUAMx3AACPAgAoAZjvAAAeBQBQAjDfAQA8CgCgBGC+AwB4FABACcB8BwDwKACAEoD5DgDgUQAAfwAqHjXHvz4p6wAAAABJRU5ErkJggg==');
+        }
+
+        /* Fandom图标 */
+        .fandom-icon {
+            background-image: url('https://static.wikia.nocookie.net/wikia/images/6/64/Favicon.ico');
+        }
+
+        /* 文字样式 */
+        .btn-text {
             font-family: 'Microsoft YaHei', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        /* 使用B站官方图标 */
-        .bilibili-icon {
-            background: url('https://www.bilibili.com/favicon.ico') no-repeat center/contain;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
-    <a href="https://space.bilibili.com/534916236?spm_id_from=333.1007.0.0" class="bilibili-link" target="_blank" rel="noopener noreferrer">
-        <div class="bilibili-icon"></div>
-        <span class="link-text">访问我的B站主页</span>
+    <!-- B站按钮 替换UID -->
+    <a href="https://space.bilibili.com/534916236?spm_id_from=333.1007.0.0" 
+       class="portal-btn bili-btn"
+       target="_blank" 
+       rel="noopener noreferrer">
+        <div class="btn-icon bili-icon"></div>
+        <span class="btn-text">B站个人主页</span>
+    </a>
+
+    <!-- Fandom按钮 替换/wiki地址 -->
+    <a href="https://huandesert.fandom.com/zh/wiki/HuanChenMOD4_Wiki"
+       class="portal-btn fandom-btn"
+       target="_blank" 
+       rel="noopener noreferrer">
+        <div class="btn-icon fandom-icon"></div>
+        <span class="btn-text">Fandom百科</span>
     </a>
 </body>
 </html>
-
